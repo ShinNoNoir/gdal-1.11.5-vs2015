@@ -240,6 +240,7 @@ JPEG12_SUPPORTED = 1
 # uncomment following line, if you have libtiff version >= 4.0 to
 # enable BigTIFF support
 #TIFF_OPTS=	-DBIGTIFF_SUPPORT
+TIFF_DIR =	tiff-4.0.7
 
 # if using an external libgeotiff library
 #GEOTIFF_INC =   -Ic:/warmerda/libgeotiff -Ic:/warmerda/libgeotiff/libxtiff

@@ -156,6 +156,11 @@ ogr_dir:      port_dir
 !ENDIF
 	cd ..
 
+external_libtiff:
+	cd $(TIFF_DIR)
+	$(MAKE) /f Makefile.vc
+	cd ..
+
 lib_dist:	default
 	rm -rf $(DISTDIR)
 	mkdir $(DISTDIR)
