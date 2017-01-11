@@ -626,8 +626,13 @@ GDALLIB	=    $(GDAL_ROOT)/gdal_i.lib
 GDALLIB	=    $(GDAL_ROOT)/gdal.lib
 !ENDIF
 
-!IFDEF ODBC_SUPPORTED
-ODBCLIB = odbc32.lib odbccp32.lib user32.lib
+# Fix from: http://stackoverflow.com/questions/33266542/linker-error-building-gdal
+!IFDEF ODBC_SUPPORTED  
+!IF $(MSVC_VER) < 1900  
+ODBCLIB = odbc32.lib odbccp32.lib user32.lib  
+!ELSE  
+ODBCLIB = legacy_stdio_definitions.lib odbc32.lib odbccp32.lib user32.lib  
+!ENDIF  
 !ENDIF
 
 !IF DEFINED(MRSID_DIR) || DEFINED(MRSID_RASTER_DIR) || DEFINED(MRSID_LIDAR_DIR)
