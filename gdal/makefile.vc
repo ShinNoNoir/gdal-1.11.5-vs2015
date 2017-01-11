@@ -60,7 +60,8 @@ LIBOBJ = port\*.obj gcore\*.obj alg\*.obj frmts\o\*.obj $(OGR_OBJ) $(VB6_OBJ)
 	
 DISTDIR	=	gdal_$(VERSION)
 
-default:	port_dir ogr_dir core_dir frmts_dir $(VB6_TARGET) $(GDAL_DLL) \
+default:	external_libtiff \
+		port_dir ogr_dir core_dir frmts_dir $(VB6_TARGET) $(GDAL_DLL) \
 		plugin_dir apps_dir 
 
 staticlib:
