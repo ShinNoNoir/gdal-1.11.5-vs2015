@@ -95,6 +95,9 @@ clean:
 	cd vb6
 	$(MAKE) /f makefile.vc clean
 	cd ..
+	cd $(TIFF_DIR)
+	$(MAKE) /f Makefile.vc clean
+	cd ..
 	if exist gdal.lib del gdal.lib
 	if exist $(GDAL_DLL) del $(GDAL_DLL)
 	if exist $(GDAL_DLL).manifest del $(GDAL_DLL).manifest
