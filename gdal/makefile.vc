@@ -56,11 +56,12 @@ BASE_INCLUDE =	/INCLUDE:$(SYM_PREFIX)GDALSimpleImageWarp \
 		/INCLUDE:$(SYM_PREFIX)OCTNewCoordinateTransformation
 !ENDIF
 
-LIBOBJ = port\*.obj gcore\*.obj alg\*.obj frmts\o\*.obj $(OGR_OBJ) $(VB6_OBJ)
+LIBOBJ = port\*.obj gcore\*.obj alg\*.obj frmts\o\*.obj $(OGR_OBJ) $(VB6_OBJ) $(TIFF_LIB_FROM_ROOT)
 	
 DISTDIR	=	gdal_$(VERSION)
 
-default:	port_dir ogr_dir core_dir frmts_dir $(VB6_TARGET) $(GDAL_DLL) \
+default:	external_libtiff \
+		port_dir ogr_dir core_dir frmts_dir $(VB6_TARGET) $(GDAL_DLL) \
 		plugin_dir apps_dir 
 
 staticlib:
@@ -93,6 +94,9 @@ clean:
 	cd ..
 	cd vb6
 	$(MAKE) /f makefile.vc clean
+	cd ..
+	cd $(TIFF_DIR)
+	$(MAKE) /f Makefile.vc clean
 	cd ..
 	if exist gdal.lib del gdal.lib
 	if exist $(GDAL_DLL) del $(GDAL_DLL)
@@ -154,6 +158,11 @@ ogr_dir:      port_dir
 !ELSE
 	$(MAKE) /f makefile.vc ogr.lib
 !ENDIF
+	cd ..
+
+external_libtiff:
+	cd $(TIFF_DIR)
+	$(MAKE) /f Makefile.vc
 	cd ..
 
 lib_dist:	default

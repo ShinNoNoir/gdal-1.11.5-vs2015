@@ -16,3 +16,19 @@ This fork includes changes to fix that, namely:
 
  * Disabling of a conflicting preprocessor macro (`snprintf`).
  * Inclusion of `legacy_stdio_definitions.lib` for ODBC support.
+
+GDAL 1.11.x modifications for LibTIFF
+====
+TIFF functionality is GDAL 1.11.x seems to be subpar.
+For some input, the following simplified example would result in a crash (Access Violation) 
+when linked against GDAL:
+
+```
+TIFF* img = TIFFOpen(inputPath, "r");
+unsigned char *buffer = new unsigned char[TILESIZE*TILESIZE];
+auto result = TIFFReadRawTile(img, tilenumber, buffer, TILESIZE*TILESIZE);
+```
+
+Linking the same code against LibTIFF would work as expected.
+Therefore, this fork of GDAL includes a separate copy of LibTIFF
+and uses that instead of the internal TIFF functionality.

@@ -240,6 +240,11 @@ JPEG12_SUPPORTED = 1
 # uncomment following line, if you have libtiff version >= 4.0 to
 # enable BigTIFF support
 #TIFF_OPTS=	-DBIGTIFF_SUPPORT
+TIFF_DIR =	tiff-4.0.7
+TIFF_LIB_FROM_ROOT =	$(TIFF_DIR)\libtiff\libtiff.lib
+# Paths relative to frmts\gtiff:
+TIFF_INC =	-I..\..\$(TIFF_DIR)\libtiff
+TIFF_LIB =	..\..\$(TIFF_LIB_FROM_ROOT)
 
 # if using an external libgeotiff library
 #GEOTIFF_INC =   -Ic:/warmerda/libgeotiff -Ic:/warmerda/libgeotiff/libxtiff
@@ -707,7 +712,9 @@ SYM_PREFIX=_
 EXTERNAL_LIBS =	$(OGDILIB) $(XERCES_LIB) $(EXPAT_LIB) $(OCI_LIB) $(PG_LIB) \
 	$(ECW_LIB_LINK) $(HDF4_LIB_LINK) $(FME_LIB) $(MRSID_LIB_LINK) \
 	$(FITS_LIB_LINK) $(JPEG_LIB) $(NETCDF_LIB_LINK) $(PROJ4_LIB) \
-	$(GEOTIFF_LIB) $(TIFF_LIB) $(PROJ_LIBRARY) $(SQLITE_LIB) \
+	$(GEOTIFF_LIB) \
+	$(TIFF_LIB_FROM_ROOT) \
+	$(PROJ_LIBRARY) $(SQLITE_LIB) \
 	$(MYSQL_LIB) $(GEOS_LIB) $(HDF5_LIB_LINK) $(SDE_LIB) $(ARCOBJECTS_LIB) $(DWG_LIB) \
 	$(IDB_LIB) $(CURL_LIB) $(DODS_LIB) $(KAKLIB) $(PCIDSK_LIB) \
 	$(ODBCLIB) $(JASPER_LIB) $(PNG_LIB) $(ADD_LIBS) $(OPENJPEG_LIB) \
