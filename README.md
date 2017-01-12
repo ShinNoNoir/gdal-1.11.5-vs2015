@@ -17,6 +17,8 @@ This fork includes changes to fix that, namely:
  * Disabling of a conflicting preprocessor macro (`snprintf`).
  * Inclusion of `legacy_stdio_definitions.lib` for ODBC support.
 
+[Relevant pull request](https://github.com/ShinNoNoir/gdal-1.11.5-vs2015/pull/1)
+
 GDAL 1.11.x modifications for LibTIFF
 ====
 TIFF functionality is GDAL 1.11.x seems to be subpar.
@@ -32,3 +34,5 @@ auto result = TIFFReadRawTile(img, tilenumber, buffer, TILESIZE*TILESIZE);
 Linking the same code against LibTIFF would work as expected.
 Therefore, this fork of GDAL includes a separate copy of LibTIFF
 and uses that instead of the internal TIFF functionality.
+
+[Relevant pull request](https://github.com/ShinNoNoir/gdal-1.11.5-vs2015/pull/2)
